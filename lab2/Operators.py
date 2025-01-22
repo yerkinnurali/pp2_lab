@@ -28,5 +28,5 @@ print(	not(x < 5 and x < 10))
 #Python Bitwise Operators
 print(x & y)
 print(	x | y)
-print(	x ^ y)
+print(x ^ y)
 print(	~x)
