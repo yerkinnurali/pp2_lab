@@ -76,7 +76,6 @@ movies = [
 }
 ]
 
-
 def third(movies):
     cat=input("Enter category:")
     c=[]

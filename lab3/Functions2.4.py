@@ -87,7 +87,6 @@ def fourth(movies,names):
     return avg
 
 
-
 n=int(input())
 names=[]
 for i in range(n):

@@ -82,5 +82,4 @@ def first(movies):
             if i["imdb"]>5.5:
                 return True
     return False
-
 print(first(movies))

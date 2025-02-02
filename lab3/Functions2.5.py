@@ -87,7 +87,6 @@ def fifth(movies,names):
     return avg
 
 
-
 n=input()
 
 print(fifth(movies,n))

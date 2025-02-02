@@ -82,5 +82,6 @@ def second(movies):
     for i in movies:
         if i["imdb"]>5.5:
             b.append(i["name"])
+
     return b
 print(second(movies))
