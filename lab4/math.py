@@ -1,5 +1,4 @@
 import math
-
 from math import radians
 #1
 degree=int(input("Input degree:"))
