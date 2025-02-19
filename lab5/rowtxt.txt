@@ -1,0 +1,16 @@
+aBBB
+ab
+abb
+abbb
+abc
+a_b_c
+Hello_World Example_Test
+TestStringExample
+aanythingb
+assbb
+Hello, world. How are you?
+this_is_a_test_string
+ThisIsCamelCaseExample
+SplitAtUpperCase
+InsertSpacesBetweenCapitalLetters
+ConvertThisCamelCaseToSnakeCase
