@@ -1,7 +1,6 @@
 import os
 from os import write
 from os.path import isdir, join, isfile
-"""
 print("Task 1")
 def directory(path):
     r=[]
@@ -54,7 +53,7 @@ for i in range(65,91):
  pat=os.path.join(path,n)
  f=open(pat,"w")
  f.write(f"This is file {chr(i)}")
- f.close()"""
+ f.close()
 print("Task 7")
 path=input("Enter file to copy:")
 new=input("Enter new file path")
