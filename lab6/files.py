@@ -64,5 +64,12 @@ c=open(new,"w")
 c.write(n)
 c.close()
 print("Task 8")
+path=input("Enter file to delete:")
+if os.path.exists(path):
+   if os.access(path, os.W_OK):
+       os.remove(path)
+       print(f"{path} removed")
+   else:
+       print("Dont have a access")
 
  
