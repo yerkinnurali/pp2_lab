@@ -15,14 +15,14 @@ while run:
 
 
     track_text = font.render(f"Track: {tracks[i]}", True, (255, 255, 255))
-    screen.blit(track_text, (400- track_text.get_width() // 2, 50))
+    screen.blit(track_text, (100, 50))
 
 
     play_text = font.render("Play/Pause [SPACE]", True, (0, 255, 0))
     next_text = font.render("Next Track [->]", True, (0, 255, 255))
 
-    screen.blit(play_text, (400 - play_text.get_width() // 2, 200))
-    screen.blit(next_text, (400 - next_text.get_width() // 2, 300))
+    screen.blit(play_text, (100, 200))
+    screen.blit(next_text, (100, 300))
 
     pygame.display.flip()
     for event in pygame.event.get():
