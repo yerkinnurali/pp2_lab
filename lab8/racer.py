@@ -71,7 +71,7 @@ class Coin(pygame.sprite.Sprite):
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
-
+#create sprites
 P1=Player()
 E1=Enemy()
 C1=Coin()
