@@ -1,11 +1,14 @@
 import pygame,random,time
 from pygame.locals import *
 pygame.init()
+#DISPLAY
 screen = pygame.display.set_mode((400,600))
+#COLOURS
 black = pygame.Color(0, 0, 0)
 white = pygame.Color(255, 255, 255)
 grey = pygame.Color(128, 128, 128)
 red = pygame.Color(255, 0, 0)
+#VARIABLE
 speed=1
 score=0
 score_coin=0
@@ -14,6 +17,7 @@ font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, black)
 score_show = font.render(f"Money:{score_coin}", True, black)
 background = pygame.image.load("doroga.jpg")
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -84,7 +88,7 @@ coins = pygame.sprite.Group()
 coins.add(C1)
 INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
-
+#GAME CYCLE
 while True:
 
      for event in pygame.event.get():
@@ -98,16 +102,19 @@ while True:
      screen.blit(scores, (10, 10))
      score_text = font_small.render(str(score_coin), True, black)
      screen.blit(score_text, (360, 10))
+     #SHOW PLAYER AND ENEMY
      for entity in all_sprites:
          screen.blit(entity.image, entity.rect)
          entity.move()
+     #SHOW COINS
      for entity in coins:
          entity.move()
          screen.blit(entity.image, entity.rect)
+     #COLLECT COIN
      if pygame.sprite.spritecollideany(P1, coins):
          score_coin += 1
          C1.respawn()
-
+     #DEATH
      if pygame.sprite.spritecollideany(P1, enemies):
          pygame.mixer.Sound('crash.wav').play()
          screen.fill(red)
