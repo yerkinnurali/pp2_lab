@@ -70,6 +70,7 @@ class Coin(pygame.sprite.Sprite):
     def move(self):
         self.rect.move_ip(0, speed)
         if self.rect.top > 600:
+
             self.respawn()
 #create sprites
 P1=Player()

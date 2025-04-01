@@ -15,9 +15,16 @@ direction = (20, 0)
 #GENERATE FOOD
 def generate_food():
     while True:
-        new_food = (random.randrange(0, 800, 20), random.randrange(0, 600, 20))
-        if new_food not in snake:
-            return new_food
+        pos = (random.randrange(0, 800, 20), random.randrange(0, 600, 20))
+        if pos not in snake:
+            food_color = random.choice([(255, 0, 0), (255, 255, 0), (0, 255, 255)])
+            if food_color == (255, 0, 0):  # Обычная еда
+                points, timer = 1, 300
+            elif food_color == (255, 255, 0):  # Бонусная еда
+                points, timer = 3, 200
+            else:  # Супер еда
+                points, timer = 5, 100
+            return {"position": pos, "color": food_color, "points": points, "timer": timer}
 
 
 food = generate_food()
@@ -64,10 +71,10 @@ while True:
 
     new_head = (snake[0][0] + direction[0], snake[0][1] + direction[1])
 #IF SNEAK EATS APPLE
-    if new_head == food:
+    if new_head == food["position"]:
         food = generate_food()
         snake.append(snake[-1])
-        score += 1
+        score += food["points"]
 
 
         if score % 3 == 0:
@@ -75,7 +82,9 @@ while True:
             speed += 2
 
     snake = [new_head] + snake[:-1]
-
+    food["timer"] -= 1
+    if food["timer"] <= 0:
+        food = generate_food()
     screen.fill((50, 205, 50))
     #SHOWS STATISTICS
     score_text = font_small.render(f"Score: {score}", True, (255, 255, 255))
@@ -86,7 +95,7 @@ while True:
     for segment in snake:
         pygame.draw.rect(screen, (0, 0, 255), (*segment, 20, 20))
 #DRAW APPLE
-    pygame.draw.rect(screen, (255, 0, 0), (*food, 20, 20))
+    pygame.draw.rect(screen, food["color"] , (*food["position"], 20, 20))
 
     pygame.display.flip()
     clock.tick(speed)

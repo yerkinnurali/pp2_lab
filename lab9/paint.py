@@ -1,4 +1,5 @@
 import pygame
+import math
 
 def main():
     pygame.init()
@@ -31,6 +32,14 @@ def main():
                     shape = 'circle'
                 elif event.key == pygame.K_v:
                     shape = 'rectangle'
+                elif event.key == pygame.K_s:
+                    shape = 'square'
+                elif event.key == pygame.K_t:
+                    shape = 'right_triangle'
+                elif event.key == pygame.K_q:
+                    shape = 'equilateral_triangle'
+                elif event.key == pygame.K_h:
+                    shape = 'rhombus'
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_e:
                     erasing = False
@@ -52,6 +61,14 @@ def main():
                 pygame.draw.circle(screen, color, pos, radius)
             elif shape == 'rectangle':
                 pygame.draw.rect(screen, color, (pos[0] - radius, pos[1] - radius, radius * 2, radius * 2))
+            elif shape == 'square':
+                pygame.draw.rect(screen, color, (pos[0] - radius, pos[1] - radius, radius * 2, radius * 2))
+            elif shape == 'right_triangle':
+                draw_right_triangle(screen, color, pos, radius)
+            elif shape == 'equilateral_triangle':
+                draw_equilateral_triangle(screen, color, pos, radius)
+            elif shape == 'rhombus':
+                draw_rhombus(screen, color, pos, radius)
 
         pygame.display.flip()
         clock.tick(60)
@@ -59,5 +76,34 @@ def main():
 def get_color(mode):
     colors = {'blue': (0, 0, 255), 'red': (255, 0, 0), 'green': (0, 255, 0)}
     return colors.get(mode, (255, 255, 255))
+
+# Draw a right triangle
+def draw_right_triangle(screen, color, pos, size):
+    points = [
+        (pos[0], pos[1] - size),
+        (pos[0] - size, pos[1] + size),
+        (pos[0] + size, pos[1] + size)
+    ]
+    pygame.draw.polygon(screen, color, points)
+
+# Draw an equilateral triangle
+def draw_equilateral_triangle(screen, color, pos, size):
+    height = math.sqrt(3) * size / 2
+    points = [
+        (pos[0], pos[1] - height),
+        (pos[0] - size, pos[1] + height),
+        (pos[0] + size, pos[1] + height)
+    ]
+    pygame.draw.polygon(screen, color, points)
+
+# Draw a rhombus
+def draw_rhombus(screen, color, pos, size):
+    points = [
+        (pos[0], pos[1] - size),
+        (pos[0] - size, pos[1]),
+        (pos[0], pos[1] + size),
+        (pos[0] + size, pos[1])
+    ]
+    pygame.draw.polygon(screen, color, points)
 
 main()
