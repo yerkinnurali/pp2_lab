@@ -36,8 +36,8 @@ while True:
         break
     elif choice == "4":
         name = input("Write old name: ")
-        new_name = input("New name (or nothing): ")
-        new_phone = input("New phone (or nothing): ")
+        new_name = input("New name : ")
+        new_phone = input("New phone : ")
 
         if new_name:
             cur.execute("UPDATE PhoneBook SET first_name = %s WHERE first_name = %s;", (new_name, name))
