@@ -5,7 +5,7 @@ conn = psycopg2.connect(
     host="localhost",
     database="snake_game.db",
     user="postgres",
-    password="******"
+    password="eca11aec3e2b"
 )
 cur = conn.cursor()
 

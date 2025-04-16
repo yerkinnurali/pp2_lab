@@ -4,7 +4,7 @@ conn = psycopg2.connect(
     host="localhost",
     database="phonebook_db",
     user="postgres",
-    password="*******"
+    password="eca11aec3e2b"
 )
 
 cur = conn.cursor()
@@ -52,5 +52,14 @@ while True:
         cur.execute("DELETE FROM PhoneBook WHERE first_name = %s AND phone = %s;", (name, phone))
         conn.commit()
         print("Info deleted.")
-    else:
-        print("Wrong number. Try again.")
+    elif choice == "6":
+        import csv
+        with open("contacts.csv", newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    name = row["first_name"]
+                    phone = row["phone"]
+                    cur.execute("INSERT INTO PhoneBook (first_name, phone) VALUES (%s, %s);", (name, phone))
+                conn.commit()
+                print("CSV data uploaded.")
+
